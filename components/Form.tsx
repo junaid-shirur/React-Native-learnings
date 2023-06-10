@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, Text } from 'react-native';
-import { TextInput, Button, ActivityIndicator } from 'react-native-paper';
+import { View, StyleSheet, Text, TextInput, Button } from 'react-native';
+// import { TextInput, Button, ActivityIndicator } from 'react-native-paper';
 import { api_key } from '../constants';
 
 
+// interface AsteroidFormProps extends NativeStackScreenProps<{}> {
+//     navigation: any
+// }
 interface AsteroidFormProps {
-    navigation: any
+    navigation?: any
 }
 const AsteroidForm: React.FC<AsteroidFormProps> = ({ navigation }) => {
     const [state, setState] = useState<FormState>({
@@ -61,31 +64,26 @@ const AsteroidForm: React.FC<AsteroidFormProps> = ({ navigation }) => {
             setState(s => ({ ...s, isSubmitting: false }))
         }
     };
-    if(state.error) return <><Text>Something went wrong</Text></>
+    if (state.error) return <><Text testID='Error_render'>Something went wrong</Text></>
     return (
         <View style={styles.container}>
+            <Text>Asteroid Id</Text>
             <TextInput
-                label="Asteroid ID"
-                mode="outlined"
+                testID='textInput'
                 value={state.asteroidId}
-                style={{ minWidth: 190 }}
-                onChangeText={text => setState(s => ({ ...s, asteroidId: text }))}
+                style={{ minWidth: 190, borderBottomColor: 'grey' }}
+                onChangeText={(text: string) => setState(s => ({ ...s, asteroidId: text }))}
             />
             <Button
-                mode="contained"
                 disabled={state.isSubmitting}
                 onPress={handleSubmit}
-            >
-                Submit
-            </Button>
+                title='Submit'
+            />
             <Button
-                mode="contained"
+                title='RandomAsteroid'
                 disabled={state.isSubmitting}
                 onPress={handleRandomAsteroid}
-            >
-                Random Asteroid
-            </Button>
-            {state.isSubmitting ? <ActivityIndicator animating={true} size="small" /> : null}
+            />
         </View>
     );
 

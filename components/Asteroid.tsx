@@ -1,9 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const AsteroidDetails: React.FC<any> = ({ route }) => {
+// interface AsteroidDetailsProps extends NativeStackScreenProps<{ Asteroid: { asteroid: Asteroid } }, "Asteroid", "Asteroid"> {
+
+// }
+
+interface AsteroidDetailsProps {
+    route: any
+}
+const AsteroidDetails: React.FC<AsteroidDetailsProps> = ({ route }) => {
     const { asteroid } = route.params
-    if (route.name !== 'Asteroid' || !asteroid.id) {
+    if (route.name !== 'Asteroid' || !asteroid?.id) {
         return <><Text>Something went wrong</Text></>
     }
     return (
@@ -13,7 +20,7 @@ const AsteroidDetails: React.FC<any> = ({ route }) => {
                 <Text>ID: {asteroid.id}</Text>
                 <Text>
                     Potentially Hazardous:{" "}
-                    {asteroid.is_potentially_hazardous_route ? "Yes" : "No"}
+                    {asteroid.is_potentially_hazardous_asteroid ? "Yes" : "No"}
                 </Text>
                 <Text>Close Approach Date: {asteroid.close_approach_date}</Text>
                 <Text>Miss Distance (km): {asteroid.miss_distance_km}</Text>
