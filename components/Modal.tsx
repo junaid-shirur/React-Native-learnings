@@ -15,7 +15,7 @@ export interface ParkingSpacesModalProps {
 const CustomModal: React.FC<ParkingSpacesModalProps> = (props) => {
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='Modal'>
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -26,6 +26,7 @@ const CustomModal: React.FC<ParkingSpacesModalProps> = (props) => {
                     <View style={styles.modalContent}>
                         <Text style={styles.modalHeader}>{props.heading}</Text>
                         <TextInput
+                            testID='modalInput'
                             style={styles.modalText}
                             value={props.inputVal}
                             // editable={props.readOnly}

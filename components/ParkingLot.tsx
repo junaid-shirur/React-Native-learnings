@@ -70,7 +70,7 @@ class ParkingLot extends React.Component<ParkingLotProps, ParkingState>{
             isModalVisible: !this.state.isModalVisible,
         });
     };
-    
+
     showPaymentOnExit = (PCar: ParkedCar) => {
         const PARKING_CHARGE_RATE = 10;
         const calculateCharge = (Ptime: number) => {
@@ -110,7 +110,6 @@ class ParkingLot extends React.Component<ParkingLotProps, ParkingState>{
                 },
                 body: JSON.stringify(data)
             })
-            
             if(payment.status == 200){
                 Alert.alert("Payment succed")
                 const updatedParkingSpaces = this.state.parkingSpaces.map(item =>
@@ -155,7 +154,7 @@ class ParkingLot extends React.Component<ParkingLotProps, ParkingState>{
                             })} />
                             <View style={styles.spaceContainer}>
                                 {parkingSpaces.length > 0 && parkingSpaces.map((item, idx) => (
-                                    <View style={styles.tile} key={idx}>
+                                    <View style={styles.tile} key={idx} testID='parking_spaces'>
                                         <Pressable
                                             onPress={() => item.carReg ? this.showPaymentOnExit(item) : null}
                                         >
