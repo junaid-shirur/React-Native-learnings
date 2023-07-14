@@ -29,7 +29,7 @@ const DATA = [
     "description": "We need to program the open-source IB interface!",
     "image": require("./assets/video-game.png")
   }
-]
+];
 
 const Indicator = ({ scrollX, onPress }) => {
   return (
