@@ -2,9 +2,6 @@ import * as React from 'react';
 import { StatusBar, Animated, Text, Image, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 const { width, height } = Dimensions.get('screen');
 
-// https://www.flaticon.com/packs/retro-wave
-// inspiration: https://dribbble.com/shots/11164698-Onboarding-screens-animation
-// https://twitter.com/mironcatalin/status/1321180191935373312
 
 const bgs = ['#A5BBFF', '#DDBEFE', '#FF63ED', '#B98EFF'];
 const DATA = [
@@ -50,7 +47,7 @@ const Indicator = ({ scrollX, onPress }) => {
           extrapolate: 'clamp'
         })
         return (
-          <TouchableOpacity key={`i${i}`} onPress={() => onPress(i)}>
+          <TouchableOpacity key={`index-${i}`} onPress={() => onPress(i)}>
           <Animated.View
             style={{
               height: 10,
